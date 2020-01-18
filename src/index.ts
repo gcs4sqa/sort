@@ -1,37 +1,26 @@
-class Sorter {
-    
-
-    constructor(public collection:number[] | string){}
-
-    sort(): void{
-
-        const { length } = this.collection;
-    // all of this only works if collection is number[]
-        // if collection is an array of numbers 
-        for(let i = 0; i < length; i++){
-            for(let j = 0; j < length -i -1; j++){
-             if (this.collection instanceof Array){ //this is a type guard for a non primative type
-                if (this.collection[j] > this.collection[j +1]){
-                 const leftHand = this.collection[j];
-                 this.collection[j] = this.collection[j+1];
-                 this.collection[j+1] = leftHand;
-             }   
-            }
-            //if collection is a string, do this logic instead
-            if(typeof this.collection === 'string'){ //this is a type guard from primative types
-
-            }
-        }
-        }
-
-        
-
-    }
-        
-}
+import { Sorter } from './Sorter';
+import { NumbersCollection} from './NumberCollection';
+import { CharactersCollection } from './CharactersCollection';
+import { LinkedList } from './LinkedList';
 
 
-const sorter = new Sorter([10 , 3, -5, 0]);
+const numbersCollection = new NumbersCollection([50, -1, 500, 10]);
+numbersCollection.sort();
+console.log(numbersCollection.data);
 
-sorter.sort();
-console.log(sorter.collection);
+
+const characterscollection = new CharactersCollection('CliffDouglas');
+console.log(`before ${characterscollection.data} `);
+characterscollection.sort();
+console.log(`after  ${characterscollection.data}`);
+
+const linkedList = new LinkedList();
+linkedList.add(500);
+linkedList.add(-10);
+linkedList.add(-3);
+linkedList.add(4);
+console.log('linkedlist before sort');
+linkedList.print();
+linkedList.sort();
+ console.log('linkedlist after sort');
+ linkedList.print();
